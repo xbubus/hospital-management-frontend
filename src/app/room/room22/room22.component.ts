@@ -24,16 +24,16 @@ export class Room22Component implements OnInit {
         }
         for (const bed of this.beds) {
           if (bed.name == "bed-22-1" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
+            this.bed22_1_s = "fill:#ffff00;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-2" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
+            this.bed22_2_s = "fill:#ffff00;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-3" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
+            this.bed22_3_s = "fill:#ffff00;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-4" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
+            this.bed22_4_s = "fill:#ffff00;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
         }
       },

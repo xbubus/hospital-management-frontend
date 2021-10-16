@@ -29,6 +29,7 @@ export class PatientService {
 
   onDelete(id:string): boolean {
     if (confirm('Are you sure ?')) {
+      alert('Dircharge form generated. Email has been sent!')
       this.delete(id).subscribe(
         response => {
           //tu usuwac z tablicy patiens usuniety obiekt i nie robic redirect w html

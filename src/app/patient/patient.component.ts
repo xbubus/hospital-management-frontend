@@ -36,6 +36,7 @@ export class PatientComponent implements OnInit {
       clinicalCondition!: [],
       contagious: [],
       dateOfAdmission!: [],
+      conscious:[],
     });
 
     this.route.params.subscribe((params: Params) => {
@@ -96,6 +97,7 @@ export class PatientComponent implements OnInit {
     const dateOfAdmission = this.newPatientForm.get('dateOfAdmission')!.value;
     const bed = this.newPatientForm.get('bed')!.value;
     const personalData = { name, PESEL, email, phoneNumber };
+    const conscious = true;
     console.log(bed)
     //TRZEBA DODAC PATCH
     this.patientService.patch(this.patientId, { personalData, dateOfAdmission, contagious, clinicalCondition, diseaseHistory,bed }).subscribe(

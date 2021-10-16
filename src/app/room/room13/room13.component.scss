@@ -52,10 +52,8 @@
 }
 
 @keyframes blinkingRect{
-    0%{     fill: rgb(221, 23, 23);    }
-    49%{    fill: transparent; }
-    50%{    fill: transparent; }
-    99%{    fill:transparent;  }
+    0%{     fill: rgb(255, 255, 0);    }
+
     100%{   fill: rgb(245, 9, 9);    }
 }
 
