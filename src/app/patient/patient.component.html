@@ -1,112 +1,136 @@
 <div class="row mb-3">
-    <div class="col-6">
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="editForm=!editForm">Edit patient</button>
-    </div>
-    <div class="col-6">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Discharge from hospital</button>        
-    </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="onReturn()">Return to patients list</button>
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="editForm=!editForm">Edit patient</button>
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="onDelete()">Discharge from hospital</button>
+  </div>
 </div>
 
 
 
 
 <form (ngSubmit)="onSubmit()" [formGroup]="newPatientForm">
-    <div class="row mb-3 justify-content-md-center" >
-        <div class="col-6">
-            <button type="submit" *ngIf="editForm" class="btn btn-primary btn-lg btn-block">Apply Changes</button>
-        </div>
+  <div class="row mb-3 justify-content-md-center">
+    <div class="col-6">
+      <button type="submit" *ngIf="editForm" class="btn btn-primary btn-lg btn-block">Apply Changes</button>
     </div>
-    <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-          <label for="inputName" class="col-form-label">Name</label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-          <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="name" placeholder="Jan Kowalski">
-        </div>
-      </div> 
-      <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-          <label for="inputPESEL" class="col-form-label">PESEL</label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-          <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="PESEL" placeholder="11223345678">
-        </div>
-      </div> 
-      <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-          <label for="inputEmail" class="col-form-label">Email address
-          </label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-          <input type="email" [readonly]="!editForm"  class="form-control" id="email" formControlName="email" placeholder="example@gmail.com">
-        </div>
-      </div> 
-      <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-          <label for="inputEmail" class="col-form-label">Phone number
-          </label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-          <input type="email" [readonly]="!editForm"  class="form-control" id="email" formControlName="phoneNumber" placeholder="111222333">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-        <label for="exampleFormControlSelect1">Assign bed //nwm jak wyswitlac aktualne przypisane</label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-        <select class="form-control" selected="patient.bed"  [attr.disabled]="!editForm ? '' : null" id="exampleFormControlSelect1" formControlName="bed">
-          <option *ngFor="let bed of beds">{{bed.name}}</option>
-        </select>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
-          <label for="inputEmail" class="col-form-label">Admission date
-          </label>
-        </div>
-        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
-          <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="dateOfAdmission" placeholder="01-01-2001">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-            <label for="inputPassword" class="col-form-label">Disease history
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="inputName" class="col-form-label">Name</label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="name"
+        placeholder="Jan Kowalski">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="inputPESEL" class="col-form-label">PESEL</label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="PESEL"
+        placeholder="11223345678">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="inputEmail" class="col-form-label">Email address
+      </label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="email"
+        placeholder="example@gmail.com">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="inputEmail" class="col-form-label">Phone number
+      </label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="phoneNumber"
+        placeholder="111222333">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="exampleFormControlSelect1">Assign bed </label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <select class="form-control" selected="patient.bed" [attr.disabled]="!editForm ? '' : null"
+        id="exampleFormControlSelect1" formControlName="bed">
+        <option *ngFor="let bed of beds">{{bed.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+      <label for="inputEmail" class="col-form-label">Admission date
+      </label>
+    </div>
+    <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+      <input type="email" [readonly]="!editForm" class="form-control" id="email" formControlName="dateOfAdmission"
+        placeholder="01-01-2001">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+      <label for="inputPassword" class="col-form-label">Disease history
 
-            </label>
-        </div>
-        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
-            <textarea type="password" [readonly]="!editForm" class="form-control" id="inputPassword" formControlName="diseaseHistory"
-                placeholder="Disease history"
-                rows=4> </textarea>
-        </div>
+      </label>
     </div>
-    <div class="row mb-3">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-            <label for="inputPassword" class="col-form-label">Clinical condition
+    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+      <textarea type="password" [readonly]="!editForm" class="form-control" id="inputPassword"
+        formControlName="diseaseHistory" placeholder="Disease history" rows=4> </textarea>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+      <label for="inputPassword" class="col-form-label">Clinical condition
 
-            </label>
-        </div>
-        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
-            <textarea type="password" [readonly]="!editForm" class="form-control" id="inputPassword" formControlName="clinicalCondition"
-                placeholder="Describe clinical condition"
-                rows=4> </textarea>
-        </div>
+      </label>
     </div>
-    <div class="row mb-3">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-            
-        </div>
-        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
-            <input type="checkbox" [readonly]="!editForm" class="form-check-input" id="exampleCheck1" formControlName="contagious">
-            <label class="form-check-label" for="exampleCheck1">is contagious</label>
-        </div>   
+    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+      <textarea type="password" [readonly]="!editForm" class="form-control" id="inputPassword"
+        formControlName="clinicalCondition" placeholder="Describe clinical condition" rows=4> </textarea>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
 
     </div>
+    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+      <input type="checkbox" [readonly]="!editForm" class="form-check-input" id="exampleCheck1"
+        formControlName="contagious">
+      <label class="form-check-label" for="exampleCheck1">is contagious</label>
+    </div>
 
+  </div>
 
-    
 </form>
+<div class="row mb-3">
+  <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+    <label for="inputPassword" class="col-form-label">Upload medical documentation
+
+    </label>
+  </div>
+  <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+    <input type="file" class="file-upload" style="display: none;" (change)="onFileSelected($event)" #fileUpload>
+    <div class="file-upload">
+
+      {{fileName || "No file uploaded yet."}}
+
+      <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- 
 

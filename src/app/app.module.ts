@@ -13,8 +13,10 @@ import { PatientsComponent } from './patients/patients.component';
 import { PatientAddComponent } from './patient-add/patient-add.component';
 import { RoomComponent } from './room/room.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HospitalComponent } from './hospital/hospital.component'
+import { MatIconModule } from '@angular/material/icon';
+import { HospitalComponent } from './hospital/hospital.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { HospitalComponent } from './hospital/hospital.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    MatIconModule,
+    BrowserAnimationsModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

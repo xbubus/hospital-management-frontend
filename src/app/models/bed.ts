@@ -6,6 +6,7 @@ export class Bed {
     room!:string;
     patient!:string;
     name!:string;
+    respirator!:boolean;
 
     private constructor() {
 

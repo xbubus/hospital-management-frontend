@@ -23,10 +23,12 @@ export class PatientAddComponent implements OnInit {
     clinicalCondition!: String;
     contagious!: Boolean;
     dateOfAdmission!:Date
-
+    date_=new Date();
+    date:string='';
   constructor(private readonly formBuilder: FormBuilder,private readonly patientService: PatientService,private readonly bedService: BedService) { }
 
   ngOnInit(): void {
+    this.date=this.date_.toISOString();
     this.bedService.get().subscribe(
       data=>{
         for (const bed of data){
@@ -67,10 +69,15 @@ export class PatientAddComponent implements OnInit {
     this.patientService.create({personalData,dateOfAdmission,contagious,clinicalCondition,diseaseHistory,bed}).subscribe(
       ok=>{
         console.log("OK! "+ok)
+        this.refresh();
       },
       err=>{
         console.log(":c "+err)
       }
     )
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 }

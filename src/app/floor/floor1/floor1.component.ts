@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./floor1.component.scss']
 })
 export class Floor1Component implements OnInit {
+  alert = true;
 
   constructor() { }
 

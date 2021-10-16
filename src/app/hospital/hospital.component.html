@@ -1,8 +1,68 @@
-<h1>Hospital</h1>
+<h1 class="mb-3">Hospital</h1>
 
-<h4>2 floors</h4>
+<!-- <h4>2 floors</h4>
 <h4>4 rooms</h4>
-<h4>{{beds.length}} beds, {{free_beds}} free</h4>
+<h4>{{beds.length}} beds, {{free_beds}} free</h4> -->
+<div class="row">
+    <div class=col-4>
+        <div class="mb-5" style="display:grid;width:400px">
+            <ngx-charts-advanced-pie-chart [scheme]="colorScheme" [results]="bedChart" [label]="label">
+            </ngx-charts-advanced-pie-chart>
+        </div>
+    
+    <div>
+        <div class="mt-5 mb-4" style="display:grid;width:400px">
+            <ngx-charts-advanced-pie-chart [scheme]="colorScheme" [results]="contagiousChart" [label]="'patients'">
+            </ngx-charts-advanced-pie-chart>
+        </div>
+    </div>
+</div>
+    <!-- x patients with contagious -->
 
-x patients with contagious
-...
+    <!-- grafiki -->
+    <div class='container col-8'>
+        <!-- <div class="row" style="padding: 20px;">
+        <div class="col-sm-12 btn btn-dark">
+            Manage your hospital patients using web app
+        </div>
+    </div> -->
+        
+            <ngb-carousel>
+                <!-- <ng-template ngbSlide>
+                    <img src="assets/img/hospital.jpg" alt="Delhi Metro">
+                    <div class="carousel-caption">
+                        <h3 style="color: black">Assign patients to rooms</h3>
+                    </div> -->
+
+
+                    <ng-template ngbSlide>
+                      <img src="assets/img/hospital.jpg" alt="Delhi Metro">
+                      <div class="carousel-caption">
+                      </div>
+                      <div class="carousel-caption"> 
+
+                        <h3 style="color:white;font-family:candara;text-align:center">manage your entire medical facility with ease</h3>
+                    </div>
+
+                    
+                </ng-template>
+                <ng-template ngbSlide>
+                    <img src="assets/img/happy.jpg" alt="Bangalore Metro">
+                    <div class="carousel-caption">
+                        <h3 style="color: black;font-family:candara;text-align:center">quickly check patients' status and data</h3>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div>
+                        <img src="assets/img/room_2.jpg" alt="Channai Metro">
+                    </div>
+                    
+                    <div class="carousel-caption">
+                        <h3 style="color: white;font-family:candara;text-align:center">visualize global stats and control patient distribution </h3>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        
+
+    </div>
+</div>

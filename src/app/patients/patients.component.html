@@ -1,3 +1,4 @@
+
 <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addForm=!addForm">Add new patient</button>
 <app-patient-add *ngIf="addForm"></app-patient-add>
 
@@ -6,21 +7,25 @@
         aria-describedby="search-addon" [(ngModel)]='searchTerm' />
 </div>
 
-<div class="row border border-dark">
-    <div class="col-4"><b>Name</b></div>
-    <div class="col-4"><b>PESEL</b></div>
-    <div class="col-4"></div>
+<div class="row border border-dark mx-1">
+    <div class="col-3"><b>Name</b></div>
+    <div class="col-3"><b>PESEL</b></div>
+    <div class="col-3"></div>
+    <div class="col-3"></div>
 </div>
 <div *ngFor="let patient of patients">
-    <div class="row border  "
+    <div class="row border mx-1" [ngClass]="{'blinking':patient.contagious }" 
         *ngIf="!searchTerm || patient.personalData.name.toLowerCase().includes(searchTerm.toLowerCase()) || patient.personalData.PESEL.toLowerCase().includes(searchTerm.toLowerCase())">
-        <div class="col-4"><a class="link" [routerLink]="'/patient/'+patient._id">{{patient.personalData.name}}</a></div>
-        <div class="col-4"><a class="link" [routerLink]="'/patient/'+patient._id">{{patient.personalData.PESEL}}</a></div>
-        <div class="col-4 float-end"><button (click)="onDelete(patient._id)"><span aria-hidden="true"
-                    class="icon-trash">Discharge from hospital</span></button>
+        <div class="col-3"><a class="link " [routerLink]="'/patient/'+patient._id">{{patient.personalData.name}}</a></div>
+        <div class="col-3"><a class="link" [routerLink]="'/patient/'+patient._id">{{patient.personalData.PESEL}}</a></div>
+        <div class="col-2 "><button class="btn btn-secondary" (click)="onEdit(patient._id)" ><span aria-hidden="true"
+            class="icon-trash">Edit</span></button></div>
+        <div class="col-4 float-end"><button class="btn btn-secondary" (click)="onDelete(patient._id)"><span aria-hidden="true"
+                    class="icon-trash">Discharge</span></button>
                
         </div>
         
     </div>
     
 </div>
+<!-- [ngClass]="{'blinking': patient.personalData.contagious }" -->

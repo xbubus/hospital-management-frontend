@@ -3,8 +3,10 @@ import { Patient } from '../models/patient'
 import { PatientService } from '../services/patient.service';
 import { Bed } from '../models/bed'
 import { BedService } from '../services/bed.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -16,9 +18,10 @@ export class PatientComponent implements OnInit {
   editForm: boolean = false;
   beds: Array<Bed> = new Array()
   public patient!: Patient;
-
-  constructor(private readonly patientService: PatientService, private route: ActivatedRoute,
-    private readonly formBuilder: FormBuilder, private readonly bedService: BedService) { }
+  fileName = '';
+  
+  constructor(private http: HttpClient,private readonly patientService: PatientService, private route: ActivatedRoute,
+    private readonly formBuilder: FormBuilder, private readonly bedService: BedService, private router:Router) { }
 
 
 
@@ -28,10 +31,10 @@ export class PatientComponent implements OnInit {
       PESEL: [],
       email: [],
       phoneNumber: [''],
-      bed!: [''], //tu raczej jakos nazwe trzeba bedzie a nie id i to w backendzie okodzic
+      bed: [], //tu raczej jakos nazwe trzeba bedzie a nie id i to w backendzie okodzic
       diseaseHistory!: [],
       clinicalCondition!: [],
-      contagious!: [],
+      contagious: [],
       dateOfAdmission!: [],
     });
 
@@ -40,7 +43,7 @@ export class PatientComponent implements OnInit {
       this.bedService.get().subscribe(
         data=>{
           for (const bed of data){
-            if(bed.isEmpty==true){
+            if(bed.isEmpty==true||bed.patient==this.patientId){
               console.log(bed)
             this.beds.push(Bed.build(bed))
             }
@@ -64,7 +67,7 @@ export class PatientComponent implements OnInit {
             diseaseHistory!: this.patient.diseaseHistory,
             clinicalCondition!: this.patient.clinicalCondition,
             contagious!: this.patient.contagious,
-            dateOfAdmission!: this.patient.dateOfAdmission,
+            dateOfAdmission!: this.patient.createdAt,
           });
 
 
@@ -93,7 +96,7 @@ export class PatientComponent implements OnInit {
     const dateOfAdmission = this.newPatientForm.get('dateOfAdmission')!.value;
     const bed = this.newPatientForm.get('bed')!.value;
     const personalData = { name, PESEL, email, phoneNumber };
-
+    console.log(bed)
     //TRZEBA DODAC PATCH
     this.patientService.patch(this.patientId, { personalData, dateOfAdmission, contagious, clinicalCondition, diseaseHistory,bed }).subscribe(
       ok => {
@@ -103,5 +106,37 @@ export class PatientComponent implements OnInit {
         console.log(":c " + err)
       }
     )
+    this.editForm=false;
+  }
+
+  onFileSelected(event:any) {
+
+    const file:File = event.target.files[0];
+    console.log("file selected")
+    if (file) {
+        console.log(file)
+        this.fileName = file.name;
+
+        const pdf = new FormData();
+
+        pdf.append("thumbnail", file);
+
+        const upload$ = this.http.patch(`${environment.backendUrl}/patient/${this.patient._id}`, {pdf:file}).subscribe(
+          ok=> {console.log(ok)},
+          err=>{console.log(err)}
+        );
+
+      
+    }
+}
+  onReturn(){
+  this.router.navigate(['/patients']);
+  }
+
+  onDelete(){
+    if(this.patientService.onDelete(this.patientId)){
+      this.router.navigate(['/patients']);
+    }
+    
   }
 }

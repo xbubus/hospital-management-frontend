@@ -10,10 +10,10 @@ export class Room22Component implements OnInit {
 
   constructor(private readonly bedService: BedService,private readonly router:Router) { }
   beds = new Array();
-  bed22_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed22_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed22_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed22_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
+  bed22_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed22_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed22_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed22_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
   ngOnInit(): void {
     this.bedService.get().subscribe(
       data => {
@@ -24,16 +24,16 @@ export class Room22Component implements OnInit {
         }
         for (const bed of this.beds) {
           if (bed.name == "bed-22-1" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed22_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-2" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed22_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-3" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed22_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-22-4" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed22_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed22_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
         }
       },
@@ -44,7 +44,7 @@ export class Room22Component implements OnInit {
   }
   goToPatients(x:number) { // redirect room/id
     for (const bed of this.beds) {
-      if (bed.name == ('bed-11-'+x)&&(bed.isEmpty==false||bed.isEmpty=="false")){
+      if (bed.name == ('bed-22-'+x)&&(bed.isEmpty==false||bed.isEmpty=="false")){
         const str= 'patient/'+bed.patient;
         this.router.navigate([str]);
       }

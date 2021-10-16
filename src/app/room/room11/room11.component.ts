@@ -10,10 +10,11 @@ export class Room11Component implements OnInit {
 
   constructor(private readonly bedService: BedService, private readonly router:Router) { }
   beds = new Array();
-  bed11_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed11_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed11_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed11_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
+  bed11_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed11_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed11_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed11_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed11_1_p: string = "not-allowed";
   ngOnInit(): void {
     this.bedService.get().subscribe(
       data => {
@@ -24,16 +25,16 @@ export class Room11Component implements OnInit {
         }
         for (const bed of this.beds) {
           if (bed.name == "bed-11-1" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed11_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed11_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-11-2" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed11_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed11_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-11-3" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed11_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed11_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-11-4" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed11_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed11_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
         }
       },

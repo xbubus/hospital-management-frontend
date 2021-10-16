@@ -11,10 +11,10 @@ export class Room13Component implements OnInit {
 
   constructor(private readonly bedService: BedService,private readonly router:Router) { }
   beds = new Array();
-  bed13_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed13_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed13_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
-  bed13_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583";
+  bed13_1_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed13_2_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed13_3_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
+  bed13_4_s: string = "fill:#008000;stroke:#000001;stroke-width:0.264583;cursor:not-allowed";
   ngOnInit(): void {
     this.bedService.get().subscribe(
       data => {
@@ -28,17 +28,17 @@ export class Room13Component implements OnInit {
         
         for (const bed of this.beds) {
           if (bed.name == "bed-13-1" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed13_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed13_1_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-13-2" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed13_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed13_2_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-13-3" && (bed.isEmpty == false ||bed.isEmpty=='false')) {
-            this.bed13_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed13_3_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
           if (bed.name == "bed-13-4" && (bed.isEmpty == false ||bed.isEmpty=='false')){
             
-            this.bed13_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583";
+            this.bed13_4_s = "fill:#ff0000;stroke:#000001;stroke-width:0.264583;cursor:pointer";
           }
         }
       },

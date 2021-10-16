@@ -24,4 +24,25 @@ export class PatientService {
   patch(patient:string,data:object): Observable<any> {
     return this.http.put(`${this._baseUrl}/patient/${patient}`,data); //powinno byc patch ale narazie put zostaje
   }
+
+
+
+  onDelete(id:string): boolean {
+    if (confirm('Are you sure ?')) {
+      this.delete(id).subscribe(
+        response => {
+          //tu usuwac z tablicy patiens usuniety obiekt i nie robic redirect w html
+          //a nie lepiej odebrac nowa tablice z backendu?
+          //tak jest szybciej, o tak:
+
+
+        },
+
+        error => {
+        }
+      );
+      return true
+    }
+    return false
+  }
 }

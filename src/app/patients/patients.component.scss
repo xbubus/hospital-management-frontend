@@ -1,3 +1,15 @@
 .link{
     color:black
 }
+
+.blinking{
+    animation:blinkingText 1s infinite;
+}
+
+@keyframes blinkingText{
+    0%{     background-color: rgb(253, 7, 7);    }
+    49%{    background-color: transparent; }
+    50%{    background-color: transparent; }
+    99%{    background-color:transparent;  }
+    100%{   background-color: rgb(243, 8, 8);    }
+}

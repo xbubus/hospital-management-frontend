@@ -12,7 +12,8 @@ export class Patient {
   diseaseHistory!: String;
   clinicalCondition!: String;
   contagious!: Boolean;
-  dateOfAdmission!:Date
+  dateOfAdmission!:Date;
+  createdAt!:Date;
   private constructor() {
   }
 
