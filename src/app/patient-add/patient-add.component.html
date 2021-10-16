@@ -1,0 +1,148 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="newPatientForm">
+    <h3>Add new patient</h3>
+    <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <label for="inputName" class="col-form-label">Name</label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+          <input type="email" class="form-control" id="email" formControlName="name" placeholder="Jan Kowalski">
+        </div>
+      </div> 
+      <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <label for="inputPESEL" class="col-form-label">PESEL</label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+          <input type="email" class="form-control" id="email" formControlName="PESEL" placeholder="11223345678">
+        </div>
+      </div> 
+      <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <label for="inputEmail" class="col-form-label">Email address
+          </label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="example@gmail.com">
+        </div>
+      </div> 
+      <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <label for="inputEmail" class="col-form-label">Phone number
+          </label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+          <input type="email" class="form-control" id="email" formControlName="phoneNumber" placeholder="111222333">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+        <label for="exampleFormControlSelect1">Assign bed</label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+        <select class="form-control" id="exampleFormControlSelect1" formControlName="bed">
+          <option *ngFor="let bed of beds">{{bed.name}}</option>
+        </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <label for="inputEmail" class="col-form-label">Admission date
+          </label>
+        </div>
+        <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+          <input type="email" class="form-control" id="email" formControlName="dateOfAdmission" placeholder="01-01-2001">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <label for="inputPassword" class="col-form-label">Disease history
+
+            </label>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+            <textarea type="password" class="form-control" id="inputPassword" formControlName="diseaseHistory"
+                placeholder="Disease history"
+                rows=4> </textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            <label for="inputPassword" class="col-form-label">Clinical condition
+
+            </label>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+            <textarea type="password" class="form-control" id="inputPassword" formControlName="clinicalCondition"
+                placeholder="Describe clinical condition"
+                rows=4> </textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+            
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="contagious">
+            <label class="form-check-label" for="exampleCheck1">is contagious</label>
+        </div>
+    </div>
+
+
+
+      <button type="submit" class="btn btn-primary ps-4 pe-4" >Add patient</button>
+</form>
+
+
+
+
+<!-- <div class="container p-4 bg-white ">
+    <div class="ps-4">
+      <app-alert 
+      *ngIf="loginError"
+      type="danger"
+      message="Error - invalid email or/and password"></app-alert>
+      <app-alert 
+      *ngIf="afterReset"
+      type="success"
+      message="If the specified email address is correct, an email has been sent. Please check your inbox and follow the instructions."></app-alert>
+      <h2 class="mb-4">Connect to your Node-RED</h2>
+
+
+
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="row mb-3">
+          <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+            <label for="inputEmail" class="col-form-label">Email
+              <span *ngIf="!this.loginForm.get('email')!.value" class="required-asterisk">*</span>
+            </label>
+          </div>
+          <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="johndoe@orange.com">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-xl-2 col-md-3 col-sm-5 col-12">
+            <label for="inputPassword" class="col-form-label">Password
+              <span *ngIf="!this.loginForm.get('password')!.value" class="required-asterisk">*</span>
+            </label>
+          </div>
+          <div class="col-xl-5 col-md-6 col-sm-7 col-12">
+            <input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="********">
+          </div>
+        </div>
+        <div *ngIf="!spin" class="col-xl-2 col-md-3 col-sm-5 col-12">
+          <button type="submit" class="btn btn-primary ps-4 pe-4" [disabled]="loginForm.invalid">Sign in</button>
+        </div>
+        <div *ngIf="!spin" class="col-xl-2 col-md-3 col-sm-5 col-12 mt-3">
+          <a href='password/reset'><b>Forgot password?</b></a>
+        </div>
+        <div *ngIf="spin" class="col-xl-2 col-md-3 col-sm-5 col-12 spinner-border text-primary ms-4" role="status">
+          <span class="sr-only"></span>
+        </div>
+  
+      </form>
+
+
+
+    </div>
+  </div> -->
